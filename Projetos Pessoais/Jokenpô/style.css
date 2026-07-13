@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.game_area {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+    padding: 20px;
+    margin: 20px;
+}
+
+.game-area-top {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    border-radius: 20px;
+    height: 75%;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+}
+
+
+.leaderboard-container {
+    background-color: blueviolet;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 2%;
+    padding: 15px 100px;
+    border-radius: 20px;
+    justify-self: flex-start;
+}
+
+.game-choices {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-self: end;
+    justify-content: space-between;
+}
+
+.choice-container {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 30%;
+    background-color: white;
+}
+
+
+.play_options {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    gap: 20px;
+}
+
+.play_rock {
+    width: 100px;
+    height: 100px;
+}
+
+.play_rock:hover {
+    width: 120px;
+    height: 120px;
+}
+
+.play_paper {
+    width: 100px;
+    height: 100px;
+}
+
+.play_paper:hover {
+    width: 120px;
+    height: 120px;
+}
+
+.play_scissors {
+    width: 100px;
+    height: 100px;
+}
+
+.play_scissors:hover {
+    width: 120px;
+    height: 120px;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main>
+        <div class="game_area">
+
+            <div class="game-area-top">
+
+                <div class="leaderboard-container">
+                    <p>1 - 1</p>
+                </div>
+
+                <div class="game-choices">
+                    <div class="choice-container">
+
+                    </div>
+
+                    <div class="choice-container">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="play_options">
+                <button onclick="alert('pedra')" class="play_rock">
+                    <p>Pedra</p>
+                </button>
+
+                <button onclick="alert('papel')" class="play_paper">
+                    <p>Papel</p>
+                </button>
+
+                <button onclick="alert('tesoura')" class="play_scissors">
+                    <p>Tesoura</p>
+                </button>
+            </div>
+        </div>
+    </main>
+    
+
+    <script>
+        return
+
+        const results = Object.freeze(
+            {
+                DRAW: 1,
+                CPU: 2,
+                PLAYER: 3,
+            }
+        )
+
+        const hands = {
+            1: "Pedra",
+            2: "Papel",
+            3: "Tesoura",
+        }
+        
+        //PLAYER x CPU
+        const plays = {
+            11: results.DRAW,   //Pedra x Pedra
+            12: results.CPU,    //Pedra x Papel
+            13: results.PLAYER, //Pedra x Tesoura
+            21: results.PLAYER, //Papel x Pedra
+            22: results.DRAW,   //Papel x Papel
+            23: results.CPU,    // Papel x Tesoura
+            31: results.CPU,    //Tesoura x Pedra
+            32: results.PLAYER, // Tesoura x Papel
+            33: results.DRAW,   //Tesoura x Tesoura
+        }
+
+        while (true) {
+            let play_cpu = Math.floor(Math.random() * 3) + 1;
+            let play_player = parseInt(prompt("[1] Pedra | [2] Papel | [3] Tesoura"));
+
+            let play_result = plays[parseInt(`${play_player}${play_cpu}`)]
+
+            if (play_result == results.DRAW) {
+                alert(
+                `Empate...\n\nVocê: ${hands[play_player]} | CPU: ${hands[play_cpu]}`
+                );
+            } else if (play_result == results.PLAYER) {
+                alert(
+                `Vitória do Jogador!\n\nVocê: ${hands[play_player]} | CPU: ${hands[play_cpu]}`
+                );
+            } else {
+                alert(
+                `Vitória da CPU!\n\nVocê: ${hands[play_player]} | CPU: ${hands[play_cpu]}`
+                );
+            }
+
+            let play_again = prompt("Jogar novamente? (S/N)");
+
+            if (play_again == "S") {
+                continue
+            }
+            else if (play_again == "N") {
+                alert("Jogo finalizado!");
+                break;
+            }
+        }
+
+    </script>
+</body>
+</html>
