@@ -1,29 +1,23 @@
 * {
     margin: 0;
     padding: 0;
+    transition: all 0.2s ease-in-out;
 }
 
 body {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
 }
 
 main {
     display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-.game_area {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
     justify-content: center;
     align-items: center;
-    background-color: green;
-    padding: 20px;
-    margin: 20px;
+    width: 100%;
+    height: 100%;
 }
 
 .game-area-top {
@@ -32,8 +26,9 @@ main {
     background-color: black;
     border-radius: 20px;
     height: 75%;
-    width: 100%;
-    justify-content: start;
+    width: 90%;
+    padding: 20px;
+    justify-content: center;
     align-items: center;
 }
 
@@ -41,9 +36,9 @@ main {
 .leaderboard-container {
     background-color: blueviolet;
     color: white;
+
     font-size: 2rem;
     font-weight: bold;
-    margin-top: 2%;
     padding: 15px 100px;
     border-radius: 20px;
     justify-self: flex-start;
@@ -52,53 +47,60 @@ main {
 .game-choices {
     display: flex;
     flex-direction: row;
+    margin: auto 0;
     width: 100%;
-    justify-self: end;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    gap: 35%;
 }
 
 .choice-container {
+    display: flex;
+    flex-direction: column;
     width: 15rem;
     height: 15rem;
     border-radius: 30%;
     background-color: white;
-}
-
-
-.play_options {
-    display: none;
     justify-content: center;
     align-items: center;
-    padding-bottom: 20px;
-    gap: 20px;
 }
 
-.play_rock {
-    width: 100px;
-    height: 100px;
+.choice-img {
+    width: 100%;
+    height: 100%;
+    background-size: 65%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.play_rock:hover {
-    width: 120px;
-    height: 120px;
+.scissors-choice {
+    background-image: url('./assets/imgs/scissors.svg');
 }
 
-.play_paper {
-    width: 100px;
-    height: 100px;
+.rock-choice {
+    background-image: url('./assets/imgs/rock.svg'); 
 }
 
-.play_paper:hover {
-    width: 120px;
-    height: 120px;
+.paper-choice {
+    background-image: url('./assets/imgs/paper.svg'); 
 }
 
-.play_scissors {
-    width: 100px;
-    height: 100px;
+.no-choice {
+    background-image: url('./assets/imgs/question_mark.svg'); 
 }
 
-.play_scissors:hover {
-    width: 120px;
-    height: 120px;
+.choice-container h2 {
+    display: flex;
+    justify-content: end;
+    flex: 2;
+}
+
+.choice-container:hover {
+    width: 15.5rem;
+    height: 15.5rem;
+}
+
+.choice-container:active {
+    width: 14.5rem;
+    height: 14.5rem;
 }
