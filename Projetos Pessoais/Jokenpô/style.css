@@ -54,6 +54,31 @@ main {
     gap: 35%;
 }
 
+.game-choices-hit {
+    animation-duration: 0.4s;
+    animation-name: hit;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes hit {
+    0% {
+        gap: 35%;
+    }
+
+    50% {
+        gap: 0%;
+    }
+
+    60% {
+        gap: 0%;
+    }
+
+    100% {
+        gap: 35%;
+    }
+}
+
 .choice-container {
     display: flex;
     flex-direction: column;
@@ -69,8 +94,45 @@ main {
     width: 100%;
     height: 100%;
     background-size: 65%;
-    background-position: center;
+    background-position-x: center;
+    background-position-y: center;
     background-repeat: no-repeat;
+}
+
+.choice-img-slide-up {
+    animation-name: slide-choice-up;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+}
+
+.choice-img-slide-down {
+    animation-name: slide-choice-down;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes slide-choice-down {
+    0% {
+        background-position-y: -600%;
+        opacity: 0%;
+    }
+
+    100% {
+        background-position-y: center;
+        opacity: 100%;
+    }
+}
+
+@keyframes slide-choice-up {
+0% {
+        background-position-y: 600%;
+        opacity: 0%;
+    }
+
+    100% {
+        background-position-y: center;
+        opacity: 100%;
+    }  
 }
 
 .scissors-choice {

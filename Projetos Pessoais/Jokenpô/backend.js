@@ -26,6 +26,8 @@ const plays = {
    33: results.DRAW,   //Tesoura x Tesoura
 }
 
+let gameChoicesContainer = document.getElementById('game-choices')
+
 let playerChoiceContainer = document.getElementById('player-choice');
 let playerChoiceImg = document.getElementById('player-choice-img');
 let playerChoiceLabel = document.getElementById('player-choice-label')
@@ -37,8 +39,17 @@ let cpuChoiceLabel = document.getElementById('cpu-choice-label')
 let currentPlayerChoice = 3;
 let currentCpuChoice = 0;
 
+playerChoiceImg.addEventListener('animationend', (event) => {
+   playerChoiceImg.classList.remove('choice-img-slide-up');
+   playerChoiceImg.classList.remove('choice-img-slide-down');
+});
+
 playerChoiceContainer.addEventListener("wheel", (event) => {
    if (event.deltaY < 0) {
+
+      // animation scroll up
+
+      playerChoiceImg.classList.add('choice-img-slide-up');
 
       if (currentPlayerChoice == 3) {
          currentPlayerChoice = 1;
@@ -48,6 +59,10 @@ playerChoiceContainer.addEventListener("wheel", (event) => {
    }
 
    else {
+
+      // animation scroll down
+      playerChoiceImg.classList.add('choice-img-slide-down');
+
       if (currentPlayerChoice == 1) {
          currentPlayerChoice = 3;
       } else {
@@ -83,8 +98,17 @@ playerChoiceContainer.addEventListener("wheel", (event) => {
    }
 });
 
-playerChoiceContainer.addEventListener("click", () => {
+// Toca uma animação e mostra o resultado da jogada ao final
+gameChoicesContainer.addEventListener('animationend', (event) => {
+   if (event.animationName === 'hit') {
+      gameChoicesContainer.classList.remove('game-choices-hit');
    alert(play(currentPlayerChoice));
+   }
+});
+
+playerChoiceContainer.addEventListener("click", () => {
+   gameChoicesContainer.classList.add('game-choices-hit')
+   //alert(play(currentPlayerChoice));
 });
 
 function play(playerChoice) {
