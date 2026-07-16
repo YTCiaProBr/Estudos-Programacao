@@ -39,12 +39,16 @@ let cpuChoiceLabel = document.getElementById('cpu-choice-label')
 let currentPlayerChoice = 3;
 let currentCpuChoice = 0;
 
+let canPlay = true;
+
 playerChoiceImg.addEventListener('animationend', (event) => {
    playerChoiceImg.classList.remove('choice-img-slide-up');
    playerChoiceImg.classList.remove('choice-img-slide-down');
 });
 
 playerChoiceContainer.addEventListener("wheel", (event) => {
+   if (canPlay == false) return;
+
    if (event.deltaY < 0) {
 
       // animation scroll up
@@ -102,13 +106,45 @@ playerChoiceContainer.addEventListener("wheel", (event) => {
 gameChoicesContainer.addEventListener('animationend', (event) => {
    if (event.animationName === 'hit') {
       gameChoicesContainer.classList.remove('game-choices-hit');
+   
    alert(play(currentPlayerChoice));
+   playerChoiceContainer.classList.add('player-choice-interactable')
+   canPlay = true;
    }
 });
 
+//Click interaction
+//RESOLVER ISSO
 playerChoiceContainer.addEventListener("click", () => {
+   if (canPlay == false) return;
+
+   for (let i = 0; i < 10; i++) {
+      let randomCpuImg = Math.floor(Math.random() * 3) + 1;
+
+      cpuChoiceContainer.classList.remove('rock-choice');
+      cpuChoiceContainer.classList.remove('paper-choice');
+      cpuChoiceContainer.classList.remove('scissors-choice');
+
+      if (randomCpuImg == 1) {
+         cpuChoiceContainer.classList.add('rock-choice');
+      } 
+
+      else if (randomCpuImg == 2) {
+         cpuChoiceContainer.classList.add('paper-choice');
+      }
+
+      else if (randomCpuImg == 3) {
+         cpuChoiceContainer.classList.add('scissors-choice');
+      }
+      
+      setTimeout(() => {
+
+      })
+   }
+
    gameChoicesContainer.classList.add('game-choices-hit')
-   //alert(play(currentPlayerChoice));
+   playerChoiceContainer.classList.remove('player-choice-interactable')
+   canPlay = false;
 });
 
 function play(playerChoice) {
@@ -116,4 +152,13 @@ function play(playerChoice) {
    let playResult = plays[parseInt(`${playerChoice}${currentCpuChoice}`)];
 
    return playResult;
+}
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
 }

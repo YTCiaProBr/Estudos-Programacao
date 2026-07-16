@@ -157,12 +157,12 @@ main {
     flex: 2;
 }
 
-.choice-container:hover {
+.player-choice-interactable:hover {
     width: 15.5rem;
     height: 15.5rem;
 }
 
-.choice-container:active {
+.player-choice-interactable:active {
     width: 14.5rem;
     height: 14.5rem;
 }
