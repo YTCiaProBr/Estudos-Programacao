@@ -10,31 +10,15 @@
     --s_color: #1351d8;
 }
 
-/* Configuração para box-sizing global para evitar que padding/border causem overflow */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* Garante que o documento ocupe toda a altura da tela sem criar overflow */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Evita qualquer rolagem horizontal acidental */
-}
-
 a {
     text-decoration: none;
 }
 
-/* BASE */
-
-/* O body agora controla a distribuição do Header, Main e Footer verticalmente */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ocupa no mínimo 100% da altura da tela */
+li {
+    list-style-type: none;
 }
+
+/* BASE */
 
 header {
     display: flex;
@@ -58,14 +42,19 @@ header {
     height: 100%;
 }
 
-.header-left, .header-right { /* Corrigido o seletor que estava separado por espaço */
+.header-left .header-right {
     flex: 1;
 }
 
 .header-right {
     display: flex;
-    justify-content: flex-end;
+    justify-content: end;
     align-items: center;
+}
+
+.header-right img {
+    display: none;
+    color: black;
 }
 
 .header-center {
@@ -88,32 +77,25 @@ header {
 .home-main {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Faz o main crescer e ocupar todo o espaço restante, empurrando o footer para baixo */
+    flex: 1;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 .ford-image {
-    display: flex; /* Alterado de 'none' para 'flex' para que o conteúdo apareça */
+    display: flex;
+    flex: 1;
     flex-direction: column;
-    width: 100%;
-    max-width: 1200px; /* Limita a largura máxima da imagem para não quebrar em telas gigantes */
+    height: 100%;
     padding: 20px;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 
-.ford-image a img {
-    max-width: 100%;
-    height: auto; /* Mantém a proporção da imagem sem distorcer */
-    object-fit: cover;
-}
-
-.ford-image p {
-    margin-top: 15px;
-    font-size: 1.2rem;
-    text-align: center;
+.ford-image img {
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
 
 /* FOOTER */
@@ -121,12 +103,12 @@ header {
 footer {
     display: flex;
     flex-direction: row;
+    bottom: 0;
     background-color: var(--p_color);
-    width: 100%; /* Alterado de 100vw para 100% para remover a barra de rolagem horizontal */
+    width: 100vw;
     height: auto;
     align-items: center;
     color: white;
-    margin-top: auto; /* Garante que o footer seja empurrado para o fim caso o conteúdo seja menor que a tela */
 }
 
 .socials {
@@ -143,7 +125,7 @@ footer {
 }
 
 footer nav {
-    padding: 15px 20px;
+    padding: 10px;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -153,21 +135,18 @@ footer nav {
 
 /* LANÇAMENTO.HTML */
 
-.lancamento-main {
+.lancamento-main{
     display: flex;
     flex-direction: column;
     flex: 1;
     justify-content: start;
     align-items: center;
-    padding: 20px;
-    width: 100%;
+    padding-top: 20px;
 }
 
 .video-lancamento {
-    display: flex;
-    width: 100vw;
+    width: 100%;
     height: 40vh;
-    margin-bottom: 20px;
 }
 
 .video-lancamento iframe {
@@ -178,10 +157,7 @@ footer nav {
 .carros {
     display: flex;
     flex-direction: row;
-    gap: 40px;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: center;
+    gap: 40px
 }
 
 .carro-item {
@@ -215,8 +191,8 @@ footer nav {
     border: none;
     padding: 10px 50px;
     border-radius: 10px;
-    margin: 20px 0;
-    cursor: pointer;
+
+    margin: auto 0;
 }
 
 /* CONTATO.HTML */
@@ -225,16 +201,14 @@ footer nav {
     display: flex;
     flex-direction: column;
     flex: 1;
+    height: 100vh;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    padding: 20px;
 }
 
 .formulario {
     display: flex;
     flex-direction: row;
-    gap: 20px;
 }
 
 .formulario-inputs {
@@ -245,19 +219,15 @@ footer nav {
 
 .formulario-inputs input {
     border-radius: 10px;
-    height: 35px;
+    height: 30px;
     width: 20vw;
-    min-width: 300px;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
+    min-width: 350px;
 }
 
 .formulario-inputs select {
     border-radius: 10px;
     height: 35px;
     width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
 }
 
 .btn-enviar {
@@ -267,38 +237,23 @@ footer nav {
     border-radius: 10px;
     width: 50%;
     height: 40px;
-    align-self: flex-end;
-    cursor: pointer;
+    align-self: end;
 }
 
 .contato-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-self: center;
+    inset: 40% 40%;
 }
 
 .contato-image img {
-    max-width: 100%;
-    height: auto;
-    align-self: start;
+    inset: 100% 100%;
 }
 
 /* AÇÃO (VOU EXCLUIR DPS) */
 
-.menu-mobile.abrir-menu {
-    display: flex;
-}
-
-.menu-mobile.abrir-menu ~ .overlay{
-    display: block;
-}
-
-/* MEDIA QUERIES */
-
 @media screen and (max-width : 1040px) {
     .carros {
         flex-direction: column;
-        align-items: center;
         padding-bottom: 30px;
     }
 
@@ -308,7 +263,6 @@ footer nav {
 
     .formulario {
         flex-direction: column;
-        align-items: center;
     }
     
     .btn-enviar {
@@ -318,9 +272,9 @@ footer nav {
 }
 
 @media screen and (max-width : 760px) {
+
     footer nav {
         flex-direction: column;
-        gap: 20px;
     }
 
     .ford-logo-footer {
@@ -330,9 +284,30 @@ footer nav {
     .socials {
         flex-direction: column;
     }
+
 }
 
 @media screen and (max-width : 580px) {
+    /* .header-center {
+        display: none;
+    }
+
+    .header-right img {
+        display: flex;
+        width: 60px;
+        height: 60px;
+    }
+    
+    .header-right:hover {
+        cursor: pointer;
+    }
+
+    .header-right img:active {
+        display: flex;
+        width: 60px;
+        height: 60px;
+    } */
+
     .header-left img {
         width: 60%;
         justify-self: center;
@@ -340,7 +315,6 @@ footer nav {
 
     .head-container {
         flex-direction: column;
-        gap: 15px;
     }
 
     .nav-links {
@@ -351,5 +325,8 @@ footer nav {
     .header-left {
         display: flex;
         justify-content: center;
+        padding-bottom: 20px;
     }
+
+    /* Carro list */
 }
